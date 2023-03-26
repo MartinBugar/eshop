@@ -9,6 +9,7 @@ import ContactUs from "../pages/ContactUs.vue";
 import AboutUs from "../pages/AboutUs.vue";
 import VerifyEmail from "../pages/Auth/VerifyEmail.vue";
 import CheckYourEmail from "../pages/Auth/CheckYourEmail.vue";
+import ForgotPassword from "../pages/Auth/ForgotPassword.vue";
 
 
 export const routes = [
@@ -51,6 +52,11 @@ export const routes = [
         name: 'verifyemail',
         path: '/verify-email',
         component: VerifyEmail
+    },
+    {
+        name: 'ForgotPassword',
+        path: '/forgot-password',
+        component: ForgotPassword
     },
     {
         name: 'CheckYourEmail',

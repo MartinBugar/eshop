@@ -17,18 +17,21 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $user = User::where('email', $request['email'])->where('email_verified_at', '<>', NULL)->first();
-        if (!$user) {
-            return [
-                "message" => 'Email nie je verifikovaný',
-                "content" => ''
-            ];
-        } else {
+
             $credentials = [
                 'email' => $request->email,
                 'password' => $request->password
             ];
 
             if (Auth::attempt($credentials)) {
+
+                if (!$user) {
+                    return [
+                        "message" => 'Email nie je verifikovaný',
+                        "content" => ''
+                    ];
+                }
+
                 $success = true;
                 $message = "Prihlásenie bolo úspešné";
             } else {
@@ -44,7 +47,7 @@ class UserController extends Controller
             return response()->json($response);
         }
 
-    }
+
 
 
     public function register(Request $request)

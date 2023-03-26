@@ -28,11 +28,6 @@ export const routes = [
         component: UserProfile
     },
     {
-        name: 'userprofile',
-        path: '/userprofile',
-        component: UserProfile
-    },
-    {
         name: 'edituserprofile',
         path: '/edituserprofile/:id',
         component: EditUserProfile

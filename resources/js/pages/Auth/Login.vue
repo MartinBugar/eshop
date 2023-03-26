@@ -118,7 +118,7 @@ export default {
 
     beforeRouteEnter(to, from, next) {
         if (window.Laravel.isLoggedin) {
-            return next('dashboard');
+            return next('/');
         }
         next();
     }

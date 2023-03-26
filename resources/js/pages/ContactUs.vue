@@ -24,16 +24,6 @@
                         </div>
                         <input type="submit" value="Odoslať">
 
-
-                        <div v-if="notARobot === false"
-                             class="alert alert-danger alert-dismissible fade show align-items-center"
-                             role="alert">
-
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                    aria-label="Close"></button>
-                            <strong> STE ROBOT</strong>
-
-                        </div>
                     </form>
                 </div>
             </div>
@@ -51,20 +41,16 @@ export default {
             name: '',
             email: '',
             message: '',
-            notARobot: '',
+            notARobot: false,
         }
     },
     methods: {
 
         //config: https://dashboard.emailjs.com/admin
         sendEmail(e) {
-            console.log(this.notARobot)
-            if (!this.notARobot) {
-                this.notARobot = false;
-                console.log(this.notARobot)
-            }
-            console.log(this.notARobot)
-            if (this.notARobot) {
+            if (this.notARobot === null || this.notARobot === false) {
+                alert("Prosim potvrdte ze nie ste robot")
+            } else {
                 try {
                     emailjs.sendForm('service_ulrki3m', 'template_do3j4ii', e.target, 'sZtoDVKcdOx0Q-ksX')
                         .then(function (response) {
@@ -80,8 +66,6 @@ export default {
                 this.name = ''
                 this.email = ''
                 this.message = ''
-
-            } else {
 
             }
 

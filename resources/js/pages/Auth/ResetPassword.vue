@@ -16,8 +16,6 @@
                                 <strong> Zadane hesla sa nezhoduju</strong>
 
                             </div>
-
-
                             <form @submit.prevent="handleResetPassword">
 
                                 <div class="form-group row">
@@ -89,9 +87,8 @@ export default {
             } else {
                 this.$axios.post('/reset-password', this.data)
                     .then(response => {
-                        if (response.data.success) {
-                            console.log("ssss")
-                            this.$router.go('/login')
+                        if (response.status === 200) {
+                            window.location.href = "/login"
                         } else {
                             this.errorMessage = response.data.message
                         }
@@ -100,7 +97,6 @@ export default {
                         console.error(error);
                     });
             }
-
         },
     }
 }

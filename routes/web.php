@@ -44,6 +44,7 @@ Route::post('/forgot-password', function (Request $request) {
 })->middleware('guest')->name('password.email');
 
 
+// RECEIVE RESET PASSWORD AND SET NEW ONE
 Route::post('/reset-password', function (Request $request) {
     $request->validate([
         'token' => 'required',

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-register">
+    <div class="bg-app">
         <div class="container">
             <div class="row jutify-content-center">
                 <div class="col-md-6" style="float:none; margin:auto;">

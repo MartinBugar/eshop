@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-login">
+    <div class="bg-app">
         <div class="container">
             <div class="row jutify-content-center login-center">
                 <div class="col-md-6" style="float:none; margin:auto;">
@@ -129,13 +129,6 @@ export default {
 .cardLogin {
     margin-top: 30px;
     border-radius: 18px;
-}
-
-.bg-login {
-    background-color: var(--bg-secondary);
-    padding-top: 4vh;
-    width: 100%;
-    height: 100vh;
 }
 
 .btn-resend {

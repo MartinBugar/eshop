@@ -18,7 +18,22 @@
                         <input type="email" name="user_email">
                         <label>Správa pre nás</label>
                         <textarea name="message"></textarea>
+                        <div class="">
+                            <label>Potvrdte ze nie ste robot </label>
+                            <input type="checkbox" v-model="notARobot">
+                        </div>
                         <input type="submit" value="Odoslať">
+
+
+                        <div v-if="notARobot === false"
+                             class="alert alert-danger alert-dismissible fade show align-items-center"
+                             role="alert">
+
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            <strong> STE ROBOT</strong>
+
+                        </div>
                     </form>
                 </div>
             </div>
@@ -35,28 +50,42 @@ export default {
         return {
             name: '',
             email: '',
-            message: ''
+            message: '',
+            notARobot: '',
         }
     },
     methods: {
 
         //config: https://dashboard.emailjs.com/admin
         sendEmail(e) {
-            try {
-                emailjs.sendForm('service_ulrki3m', 'template_do3j4ii', e.target, 'sZtoDVKcdOx0Q-ksX')
-                    .then(function (response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                    }, function (error) {
-                        console.log('FAILED...', error);
-                    });
-
-            } catch (error) {
-                console.log({error})
+            console.log(this.notARobot)
+            if (!this.notARobot) {
+                this.notARobot = false;
+                console.log(this.notARobot)
             }
-            // Reset form field
-            this.name = ''
-            this.email = ''
-            this.message = ''
+            console.log(this.notARobot)
+            if (this.notARobot) {
+                try {
+                    emailjs.sendForm('service_ulrki3m', 'template_do3j4ii', e.target, 'sZtoDVKcdOx0Q-ksX')
+                        .then(function (response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                        }, function (error) {
+                            console.log('FAILED...', error);
+                        });
+
+                } catch (error) {
+                    console.log({error})
+                }
+                // Reset form field
+                this.name = ''
+                this.email = ''
+                this.message = ''
+
+            } else {
+
+            }
+
+
         },
 
     }

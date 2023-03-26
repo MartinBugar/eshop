@@ -13,6 +13,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 <strong>{{ this.errorMessage }}</strong>
+
                                 <button v-if="errorMessage === 'Email nie je verifikovaný'" type="button"
                                         class="btn btn-primary btn-resend"
                                         aria-label="Resend email" @click="resendEmail()">Znova zaslať verifikačný email
